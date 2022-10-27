@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/plantilla :: head">
 </head>
 <body>
+
+	<header th:replace="layout/plantilla :: header"></header>
+	<div th:if="${exito != null}">
+		<div class="alert alert-success" role="alert" th:text="${exito}">Exito!</div>
+	</div>
+
+	<header th:replace="layout/plantilla :: footer"></header>
 
 </body>
 </html>
