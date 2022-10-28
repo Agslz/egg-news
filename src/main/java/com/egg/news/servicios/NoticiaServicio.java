@@ -1,6 +1,5 @@
 package com.egg.news.servicios;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -38,11 +37,7 @@ public class NoticiaServicio {
 	@Transactional(readOnly = true)
 	public List<Noticia> listarNoticias() {
 
-		List<Noticia> noticias = new ArrayList<Noticia>();
-
-		noticias = noticiaRepositorio.findAll();
-
-		return noticias;
+		return noticiaRepositorio.ordenarPorFechaDesc();
 
 	}
 
@@ -64,6 +59,10 @@ public class NoticiaServicio {
 
 		}
 
+	}
+	
+	public Optional<Noticia> findById(Long id) {
+		return noticiaRepositorio.findById(id);
 	}
 
 	private void validar(String titulo, String cuerpo) throws MiException {
