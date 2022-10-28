@@ -5,13 +5,43 @@
 <head th:replace="layout/plantilla :: head">
 </head>
 <body>
-
 	<header th:replace="layout/plantilla :: header"></header>
-	<div th:if="${exito != null}">
-		<div class="alert alert-success" role="alert" th:text="${exito}">Exito!</div>
+	
+	<div class="container-fluid vh-100">
+		<div class="pt-4 container">
+			<div class="card">
+				<div class="row">
+					<div class="col-12 col-md-4 mb-4" th:each="noticia : ${noticias}">
+						<div class="card bg-dark">
+						<!-- <img th:src="@{'data:image/jpeg;base64,'+${noticia.imagen}}"
+								class="card-img-top rounded-3 imagenstyle" alt="Imagen HTML">
+							<div class="card-body"> -->	
+								<h3 class="card-title text-white text-capitalize fs-2"
+									th:text="${noticia.titulo}"></h3>
+								<!--	<p class="card-text text-white m-0">
+									Autor : <small class="text-muted fst-italic  text-capitalize"
+										th:text="${noticia.autor}"></small>
+								</p>-->
+								<p class="card-text text-white">
+									Publicada el : <small class="text-muted fst-italic"
+										th:text="${noticia.alta}"></small>
+								</p>
+								<!-- <div class="text-end">
+									<a sec:authorize="isAuthenticated()"
+										class="btn btn-sm btn-outline-warning text-decoration-none  fw-bolder"
+										th:href="@{/admin/completa/} + ${noticia.id}">Leer Más </a> <a
+										sec:authorize="!isAuthenticated()"
+										class="btn btn-sm btn-outline-warning text-decoration-none  fw-bolder"
+										th:href="@{/home/lectura/} + ${noticia.id}">Leer Más </a>
+								</div> -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-
-	<header th:replace="layout/plantilla :: footer"></header>
+	<footer th:replace="layout/plantilla :: footer"></footer>
 
 </body>
 </html>
