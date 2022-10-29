@@ -2,6 +2,7 @@ package com.egg.news.entidades;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,7 +32,8 @@ public class Noticia {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date alta;
 	
-	//@NotEmpty
-    //private String imagen;
+	@NotEmpty
+	@Column(nullable = false, columnDefinition="MEDIUMTEXT")
+    private String imagen;
 	
 }

@@ -13,9 +13,9 @@
 				<div class="row">
 					<div class="col-12 col-md-4 mb-4" th:each="noticia : ${noticias}">
 						<div class="card bg-dark">
-						<!-- <img th:src="@{'data:image/jpeg;base64,'+${noticia.imagen}}"
+						 <img style="height:200px;width:353px" th:src="@{'data:image/jpeg;base64,'+${noticia.imagen}}"
 								class="card-img-top rounded-3 imagenstyle" alt="Imagen HTML">
-							<div class="card-body"> -->	
+							<div class="card-body">	
 								<h3 class="card-title text-white text-capitalize fs-2"
 									th:text="${noticia.titulo}"></h3>
 								<!--	<p class="card-text text-white m-0">

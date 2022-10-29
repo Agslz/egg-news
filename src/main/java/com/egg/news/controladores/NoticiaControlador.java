@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.egg.news.excepciones.MiException;
 import com.egg.news.servicios.NoticiaServicio;
@@ -26,10 +27,10 @@ public class NoticiaControlador {
 	}
 
 	@PostMapping("/crear")
-	public String registro(@RequestParam String titulo, @RequestParam String cuerpo, ModelMap modelo) { // String imagen
-
+	public String registro(@RequestParam String titulo, @RequestParam String cuerpo, MultipartFile imagen,ModelMap modelo) { // String imagen
+		
 		try {
-			noticiaServicio.crearNoticia(titulo, cuerpo);
+			noticiaServicio.crearNoticia(titulo, cuerpo, imagen);
 			modelo.put("exito","La noticia fue cargada correctamente");
 		} catch (MiException e) {
 			modelo.put("error", e.getMessage());
@@ -47,9 +48,9 @@ public class NoticiaControlador {
 	}
 	
 	@PostMapping("/editar/{id}")
-	public String modificar(@PathVariable Long id, String titulo, String cuerpo, ModelMap modelo) throws MiException {
+	public String modificar(@PathVariable Long id, String titulo, String cuerpo, MultipartFile imagen,ModelMap modelo) throws MiException {
 		try {
-			noticiaServicio.modificarNoticia(id, titulo, cuerpo);	
+			noticiaServicio.modificarNoticia(id, titulo, cuerpo, imagen);	
 			return "redirect:../index";
 		}catch(MiException e) {
 			modelo.put("error", e.getMessage());
