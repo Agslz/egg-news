@@ -37,7 +37,8 @@ public class NoticiaControlador {
 			System.out.println(e);
 			return "noticiaForm";
 		}
-		return "noticiaForm";
+		
+		return "redirect:/";
 
 	}
 	
